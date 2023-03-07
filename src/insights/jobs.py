@@ -11,7 +11,15 @@ def read(path):
         return list(content)
 
 
-def get_unique_job_types(path: str) -> List[str]:
+def get_unique_job_types(path: str):
+    jobs = read(path)
+    job_types = []
+    for job in jobs:
+        job_types_record = job["job_type"]
+        if job_types_record not in job_types:
+            job_types.append(job_types_record)
+    return job_types
+
     """Checks all different job types and returns a list of them
 
 
